@@ -1,0 +1,5 @@
+*.pdf
+*.xdv
+*.log
+version.tex
+.directory

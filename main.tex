@@ -1,0 +1,31 @@
+% This is not the file you should process. 
+% It is  included by one of the adhern-*.tex files. 
+% Preferably, use make.sh to generate pdf files.
+
+\input{common}
+
+\begin{document} 
+
+\pagestyle{empty} % No headers
+
+\input{cover} % Cover page
+
+\frontmatter % Roman page numbers and unnumbered chapters
+
+\input{front} % Title page, notices etc.
+
+\pagestyle{fancyplain} % Headers on
+
+\addtocontents{toc}{\protect{\pdfbookmark[0]{\contentsname}{toc}}} % Add TOC to the PDF index
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\mainmatter % Arabic page numbers and numbered chapters
+
+% Chapters
+% \input{chapters/example}
+
+\backmatter % unnumbered chapters
+
+\end{document}

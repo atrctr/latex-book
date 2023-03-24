@@ -1,0 +1,94 @@
+% Define common reused variables
+\def\OPTauthor{Author Name}
+\def\OPTtitle{Title}
+\def\OPTsubtitle{Subtitle}
+
+\title{\the\OPTtitle}
+\author{\the\OPTauthor}
+\date{}
+
+%%% DOCUMENT CLASS
+\documentclass[11pt,twoside]{book}
+
+%%% PACKAGES
+%
+% PAGE GEOMETRY
+\usepackage[papersize={\OPTpagesize},
+    margin=\OPTmargin,
+    bindingoffset=\OPTbindingoffset,
+    twoside,
+    includehead]{geometry} 
+%
+% uncomment for layout debugging
+%\geometry{showframe}
+
+% ENCODINGS ETC
+% Unicode input
+%\usepackage[utf8]{inputenc} % conflicts with XeTeX
+% modern font encoding
+\usepackage[T1]{fontenc}
+% english language 
+\usepackage[english]{babel}
+
+\usepackage{fontspec}
+\setmainfont[BoldFont={Gentium Basic Bold},ItalicFont={Gentium Italic}]{Gentium}
+
+% FORMATTING
+% Extra symbols
+\usepackage{textcomp}
+% nice headers
+\usepackage{fancyhdr}
+% nice, pretty lists
+\usepackage{enumitem}
+\setlist{noitemsep}
+\setlist[description]{font=\bfseries}
+% Multi-Columns for long lists of names
+\usepackage{multicol}
+
+% LINKS AND METADATA
+\usepackage[hidelinks,
+    pdfauthor={\OPTauthor},
+    pdftitle={\OPTtitle  - \OPTsubtitle},
+    pdfsubject={},
+    pdfkeywords={}]{hyperref}
+
+% LINGUISTICS
+% tree diagram generation
+% \usepackage{qtree}
+% linguistic glosses etc. 
+% \usepackage{gb4e}
+
+% Nice tables
+\usepackage{tabularx}
+
+%%% PAGE STYLES %%%
+
+% FANCYPLAIN
+\pagestyle{fancyplain}
+\setlength{\headheight}{15pt}
+\fancyhf{}
+% headers
+\lhead[\fancyplain{}{{\thepage}}]   {\fancyplain{}{\nouppercase{\rightmark}}}
+\rhead[\fancyplain{}{\nouppercase{\leftmark}}]  {\fancyplain{}{\thepage}}
+% 
+% PLAIN REDEFINITION
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\rhead[\fancyplain{}{{\thepage}}]{\fancyplain{}{{\thepage}}}%
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}%
+\renewcommand{\footrulewidth}{0pt}}
+% 
+% CHAPTER NUMBERING ONLY IN MAIN MATTER
+\renewcommand{\chaptermark}[1]{%
+  \if@mainmatter
+    \markboth{Chapter \thechapter{}: #1}{}%
+  \else
+    \markboth{#1}{}%
+  \fi
+}
+
+\renewcommand{\thesection}{\hspace*{-1.0em}}
+\renewcommand{\thesubsection}{\hspace*{-1.0em}}
+
+\renewcommand{\sectionmark}[1]{\markright{#1}}
